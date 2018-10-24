@@ -5,10 +5,12 @@
     <string name="age_field">Age:</string>
     <string name="country_field">Country</string>
     <string name="sign_up">Sign Up</string>
-    <string name="name_hint">Jhon Smith</string>
+    <string name="name_hint">A-Z,a-z</string>
     <string name="age_hint">16–100</string>
+    <string name="default_country">Select</string>
 
     <string-array name="country_arrays">
+        <item>@string/default_country</item>
         <item>Israel</item>
         <item>Malaysia</item>
         <item>United States</item>

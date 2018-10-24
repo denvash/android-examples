@@ -56,10 +56,11 @@
             android:id="@+id/edit_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
             android:ems="10"
             android:hint="@string/name_hint"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="text|textCapWords|textPersonName"
             android:selectAllOnFocus="false"
             android:singleLine="true"
             tools:targetApi="o" />
@@ -116,6 +117,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"
+            android:onClick="resetWithToast"
+            android:enabled="false"
             android:text="@string/sign_up"
             android:typeface="monospace" />
     </LinearLayout>
