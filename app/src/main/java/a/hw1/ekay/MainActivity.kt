@@ -13,11 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit_text_name.setOnEditorActionListener { v, actionId, _ ->
+        edit_text_name.setOnEditorActionListener { _, actionId, _ ->
             var handle = true
             if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                val defaultCountry = getString(R.string.default_country)
-                button_signup.isEnabled = v.text.isNotEmpty() && country_spinner.selectedItem.toString() != defaultCountry
+                activeButtonOnLegalState()
                 handle = false
             }
             handle
@@ -30,6 +29,9 @@ class MainActivity : AppCompatActivity() {
                 if (v.text.toString().toInt() !in ageRestriction) {
                     Toast.makeText(applicationContext, "Age restricted to 16-100", Toast.LENGTH_SHORT).show()
                     edit_text_age.text.clear()
+                    button_signup.isEnabled = false
+                } else {
+                    activeButtonOnLegalState()
                 }
                 handle = false
             }
@@ -38,14 +40,15 @@ class MainActivity : AppCompatActivity() {
 
         country_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                button_signup.isEnabled = position != 0 && edit_text_name.text.isNotEmpty()
+                activeButtonOnLegalState()
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                button_signup.isEnabled = false
+            }
         }
 
     }
-
 
     fun resetWithToast(view: View) {
         Toast.makeText(applicationContext, "User created!", Toast.LENGTH_SHORT).show()
@@ -53,5 +56,13 @@ class MainActivity : AppCompatActivity() {
         edit_text_age.text.clear()
         country_spinner.setSelection(0)
         button_signup.isEnabled = false
+    }
+
+    private fun activeButtonOnLegalState() {
+        val defaultCountry = getString(R.string.default_country)
+        button_signup.isEnabled =
+                country_spinner.selectedItem.toString() != defaultCountry &&
+                edit_text_name.text.isNotBlank() &&
+                edit_text_age.text.isNotBlank()
     }
 }
