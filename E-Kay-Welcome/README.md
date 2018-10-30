@@ -1,6 +1,6 @@
 # E-Kay-Welcome
 
-An example of an Android Registartion app written in `Kotlin`.
+An example of an Android Registration app written in `Kotlin`.
 
 ## Goal
 
