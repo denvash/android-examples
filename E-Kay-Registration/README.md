@@ -1,4 +1,4 @@
-# E-Kay
+# E-Kay-Registration
 
 An example of an Android Registartion app written in `Kotlin`.
 
