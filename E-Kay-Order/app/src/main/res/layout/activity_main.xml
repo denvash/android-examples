@@ -110,14 +110,13 @@
 
         <Button
             android:id="@+id/button_sign_up"
-            style="@style/Widget.AppCompat.Button.Small"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:enabled="false"
-            android:fontFamily="sans-serif-condensed"
             android:text="@string/sign_up"
 
-            android:typeface="monospace" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Button" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
