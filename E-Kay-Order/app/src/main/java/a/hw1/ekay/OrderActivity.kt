@@ -31,12 +31,13 @@ class OrderActivity : AppCompatActivity() {
         display_user_name.text = welcomeMsg
 
 
-        // Display devices list
+        // Setting RecycleView with LinearLayout
         makeOrder_recycleView.layoutManager = LinearLayoutManager(applicationContext)
         makeOrder_recycleView.addItemDecoration(
             DividerItemDecoration(this@OrderActivity, LinearLayoutManager.HORIZONTAL)
         )
 
+        // Setting Adapter
         val lastOrder = LastOrder()
         makeOrder_recycleView.adapter = OrderAdapter(this@OrderActivity, androidDevices, lastOrder)
 
