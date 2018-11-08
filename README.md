@@ -10,3 +10,8 @@ Examples of android apps for study purposes.
   - Switch between Activities.
   - Passing values between activities.
   - Dynamic string from resource.
+- [E-Kay-Order](/E-Kay-Order/README.md) extends E-Kay-Welcome
+  - Use of `RecycleView` and adapter.
+  - Single selection of `CheckedTextView` in `RecycleView`.
+  - Button state control.
+  - Exit application.
