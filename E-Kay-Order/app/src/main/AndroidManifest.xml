@@ -9,7 +9,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -27,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="a.hw1.ekay.MainActivity" />
         </activity>
+        <activity
+            android:name=".ExitAndRemoveFromRecentAppsDummyActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            />
     </application>
 
 </manifest>
