@@ -42,14 +42,14 @@ After signing-up, make an **Order** for available devices.
 #### Setting Adapter
 
 ```Kotlin
-        // Setting RecycleView with LinearLayout
-        makeOrder_recycleView.layoutManager = LinearLayoutManager(applicationContext)
-        makeOrder_recycleView.addItemDecoration(
-            DividerItemDecoration(this@OrderActivity, LinearLayoutManager.HORIZONTAL)
-        )
-        // Setting Adapter
-        val lastOrder = LastOrder()
-        makeOrder_recycleView.adapter = OrderAdapter(this@OrderActivity, androidDevices, lastOrder)
+// Setting RecycleView with LinearLayout
+makeOrder_recycleView.layoutManager = LinearLayoutManager(applicationContext)
+makeOrder_recycleView.addItemDecoration(
+    DividerItemDecoration(this@OrderActivity, LinearLayoutManager.HORIZONTAL)
+)
+// Setting Adapter
+val lastOrder = LastOrder()
+makeOrder_recycleView.adapter = OrderAdapter(this@OrderActivity, androidDevices, lastOrder)
 ```
 
 Setting the `RecycleView` to show the order items in `LinearLayot`.
@@ -60,15 +60,15 @@ Initializing adapter with `androidDevices` array and `lastOrder` for filling the
 ```Kotlin
 // Button Alert-Dialog
 order_button.setOnClickListener {
-            AlertDialog.Builder(this@OrderActivity)
-                .setTitle("E-Kay")
-                .setMessage("Approve order for: ${lastOrder.str}?")
-                .setPositiveButton("YES") { _, _ ->
-                    Toast.makeText(applicationContext, "order sent!", Toast.LENGTH_SHORT).show()
-                }
-                .setNegativeButton("NO") { _, _ -> }
-                .create()
-                .show()
+    AlertDialog.Builder(this@OrderActivity)
+        .setTitle("E-Kay")
+        .setMessage("Approve order for: ${lastOrder.str}?")
+        .setPositiveButton("YES") { _, _ ->
+            Toast.makeText(applicationContext, "order sent!", Toast.LENGTH_SHORT).show()
+        }
+        .setNegativeButton("NO") { _, _ -> }
+        .create()
+        .show()
         }
 ```
 
@@ -108,10 +108,10 @@ fun Activity.finishAndRemoveTaskCompat() {
 Finishing the activity or intening it to `ExitHelper`, defined with `Theme.NoDisplay` for fast rendering.
 
 ```xml
-        <activity
-            android:name=".ExitHelper"
-            android:theme="@android:style/Theme.NoDisplay"
-            />
+<activity
+    android:name=".ExitHelper"
+    android:theme="@android:style/Theme.NoDisplay"
+    />
 ```
 
 ```Kotlin
@@ -160,50 +160,49 @@ Using kotlin extensions for adding `infalte` functionallity:
 #### Single Selection
 
 ```Kotlin
-    // @OrderAdapter.kt
-    // Manage single CheckedTextView selection
-    private lateinit var lastOrder: CheckedTextView
-    private var isFirstOrder = true
-    override fun onBindViewHolder(holder: OrderHolder, position: Int) {
-        // Initialize RecycleView rows on bind
-        holder.orderRowItemView.text = devices[position]
-        // Manage the rows on click
-        holder.orderRowItemView.setOnClickListener {
+// @OrderAdapter.kt
+// Manage single CheckedTextView selection
+private lateinit var lastOrder: CheckedTextView
+private var isFirstOrder = true
+override fun onBindViewHolder(holder: OrderHolder, position: Int) {
+    // Initialize RecycleView rows on bind
+    holder.orderRowItemView.text = devices[position]
+    // Manage the rows on click
+    holder.orderRowItemView.setOnClickListener {
 
-            val orderButton = (context as OrderActivity).order_button!!
-            val currentOrder = holder.orderRowItemView
+        val orderButton = (context as OrderActivity).order_button!!
+        val currentOrder = holder.orderRowItemView
 
-            // Update order message at OrderActivity
-            lastOrderRef.str = currentOrder.text.toString()
+        // Update order message at OrderActivity
+        lastOrderRef.str = currentOrder.text.toString()
 
-            // Initialize the late-init var
-            if (isFirstOrder) {
-                isFirstOrder = !isFirstOrder
-                lastOrder = currentOrder
-            }
-
-            // Click on other order
-            if (lastOrder != currentOrder) {
-                lastOrder.setCheckMarkDrawable(R.drawable.check_ic)
-                lastOrder.isChecked = false
-                lastOrder = currentOrder
-            }
-
-            if (currentOrder.isChecked) {
-                // set check mark drawable and set checked property to false
-                currentOrder.setCheckMarkDrawable(R.drawable.check_ic)
-                currentOrder.isChecked = false
-                orderButton.isEnabled = false
-            } else {
-                // set check mark drawable and set checked property to true
-                currentOrder.setCheckMarkDrawable(R.drawable.check)
-                currentOrder.isChecked = true
-                orderButton.isEnabled = true
-            }
+        // Initialize the late-init var
+        if (isFirstOrder) {
+            isFirstOrder = !isFirstOrder
+            lastOrder = currentOrder
         }
+
+        // Click on other order
+        if (lastOrder != currentOrder) {
+            lastOrder.setCheckMarkDrawable(R.drawable.check_ic)
+            lastOrder.isChecked = false
+            lastOrder = currentOrder
+        }
+
+        if (currentOrder.isChecked) {
+            // set check mark drawable and set checked property to false
+            currentOrder.setCheckMarkDrawable(R.drawable.check_ic)
+            currentOrder.isChecked = false
+            orderButton.isEnabled = false
+        } else {
+            // set check mark drawable and set checked property to true
+            currentOrder.setCheckMarkDrawable(R.drawable.check)
+            currentOrder.isChecked = true
+            orderButton.isEnabled = true
+        }
+    }
 ```
 
 Ensures selection of single item using last `CheckedTextView` reference saved at `lastOrder` var.
 Changing the **Order** button state (clickable) located at `OrderActivity` by referencing it from given `context`:
 `(context as OrderActivity).order_button!!`
-
