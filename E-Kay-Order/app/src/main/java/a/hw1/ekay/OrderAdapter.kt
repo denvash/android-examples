@@ -8,7 +8,7 @@ import android.widget.CheckedTextView
 import kotlinx.android.synthetic.main.activity_order_activity.*
 
 
-class OrderAdapter(internal var context: Context, private val devices: Array<String>, private val lastOrderRef: OrderActivity.LastOrder) :
+class OrderAdapter(private var context: Context, private val devices: Array<String>, private val lastOrderRef: OrderActivity.LastOrder) :
     RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
 
     inner class OrderHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -38,6 +38,7 @@ class OrderAdapter(internal var context: Context, private val devices: Array<Str
 
             val orderButton = (context as OrderActivity).order_button!!
             val currentOrder = holder.orderRowItemView
+            lastOrderRef.str = currentOrder.text.toString()
 
             // Initialize the late-init var
             if (isFirstOrder) {

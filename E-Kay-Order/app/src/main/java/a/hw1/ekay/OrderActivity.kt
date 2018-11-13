@@ -7,9 +7,6 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.DividerItemDecoration
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_order_activity.*
-import android.content.Intent
-import android.os.Build
-import android.support.annotation.RequiresApi
 
 
 class OrderActivity : AppCompatActivity() {

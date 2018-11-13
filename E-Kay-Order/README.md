@@ -1,6 +1,6 @@
 # E-Kay-Order
 
-![E-Kay-Order](https://media.giphy.com/media/13QRyXpeHxtqdcTWXI/giphy.gif)
+![E-Kay-Order-Potrait](https://media.giphy.com/media/7T0dSX6bsPFApxnQV0/giphy.gif) ![E-Kay-Order-Landscape](https://media.giphy.com/media/Nmgxj4tQCJ8kFkhNd3/giphy.gif)
 
 An example of an Android Order app written in `Kotlin`.
 *Designed on:*
