@@ -1,5 +1,7 @@
 # Android examples
 
+![E-Kay-Order-Potrait](https://media.giphy.com/media/7T0dSX6bsPFApxnQV0/giphy.gif)
+
 Examples of android apps for study purposes.
 
 - [E-Kay-Registration](/E-Kay-Registration/README.md) Registartion app
