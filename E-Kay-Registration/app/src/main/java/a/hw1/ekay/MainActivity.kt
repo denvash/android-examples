@@ -2,8 +2,9 @@ package a.hw1.ekay
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,30 +14,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit_text_name.setOnEditorActionListener { _, actionId, _ ->
-            var handle = true
-            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+        edit_text_name.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
                 activeButtonOnLegalState()
-                handle = false
             }
-            handle
-        }
 
-        edit_text_age.setOnEditorActionListener { v, actionId, _ ->
-            var handle = true
-            val ageRestriction = 16..100
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (v.text.toString().toInt() !in ageRestriction) {
-                    Toast.makeText(applicationContext, "Age restricted to 16-100", Toast.LENGTH_SHORT).show()
-                    edit_text_age.text.clear()
-                    button_signup.isEnabled = false
-                } else {
-                    activeButtonOnLegalState()
-                }
-                handle = false
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
-            handle
-        }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+
+        edit_text_age.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                activeButtonOnLegalState()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
 
         country_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -44,25 +44,31 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                button_signup.isEnabled = false
+                button_sign_up.isEnabled = false
             }
+        }
+
+        button_sign_up.setOnClickListener {
+            resetWithToast()
         }
 
     }
 
-    fun resetWithToast(view: View) {
+    fun resetWithToast() {
         Toast.makeText(applicationContext, "User created!", Toast.LENGTH_SHORT).show()
         edit_text_name.text.clear()
         edit_text_age.text.clear()
         country_spinner.setSelection(0)
-        button_signup.isEnabled = false
+        button_sign_up.isEnabled = false
     }
 
     private fun activeButtonOnLegalState() {
         val defaultCountry = getString(R.string.default_country)
-        button_signup.isEnabled =
+        val currentAge = if (edit_text_age.text.isNotBlank()) edit_text_age.text.toString().toInt() else 0
+        val legalAge = currentAge in 16..100
+        button_sign_up.isEnabled =
                 country_spinner.selectedItem.toString() != defaultCountry &&
-                edit_text_name.text.isNotBlank() &&
-                edit_text_age.text.isNotBlank()
+                edit_text_name.text.isNotBlank() && edit_text_name.text.toString() != ""
+                edit_text_age.text.isNotBlank() && legalAge
     }
 }

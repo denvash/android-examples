@@ -1,6 +1,6 @@
 # E-Kay-Registration
 
-An example of an Android Registartion app written in `Kotlin`.
+An example of an Android Registration app written in `Kotlin`.
 
 ## Goal
 
@@ -24,47 +24,30 @@ Pressing the **SingUp** button will show a toast.
 
 ## Code
 
-### EditText - Full Name
+### EditText - Full Name, Age
 
 ```xml
 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
 ```
 
 ```Kotlin
-        edit_text_name.setOnEditorActionListener { _, actionId, _ ->
-            var handle = true
-            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+        edit_text_name.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
                 activeButtonOnLegalState()
-                handle = false
             }
-            handle
-        }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
 ```
 
 **Full Name** characters were restritced using the `android:digits` tag.
-By using `setOnEditorActionListener` on action `EditorInfo.IME_ACTION_NEXT` we check if all the fields are legal and if so we enable the **SingUp** button.
+By using `activeButtonOnLegalState` we check if all the fields are legal and if so we enable the **SingUp** button.
 
-### EditText - Age
-
-```Kotlin
-        edit_text_age.setOnEditorActionListener { v, actionId, _ ->
-            var handle = true
-            val ageRestriction = 16..100
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (v.text.toString().toInt() !in ageRestriction) {
-                    Toast.makeText(applicationContext, "Age restricted to 16-100", Toast.LENGTH_SHORT).show()
-                    edit_text_age.text.clear()
-                    button_signup.isEnabled = false
-                } else {
-                    activeButtonOnLegalState()
-                }
-                handle = false
-            }
-            handle
-        }
-```
-
-Using `setOnEditorActionListener` if the filled age wasn't legal, the age field was cleared with a toast, else we check if all fields are legal using `activeButtonOnLegalState()`
+Using `afterTextChanged` if the filled age wasn't legal, the age field was cleared with a toast, else we check if all fields are legal using `activeButtonOnLegalState()`
 
 ### Spinner - Countries
 
@@ -89,7 +72,7 @@ android:onClick="resetWithToast"
 ```
 
 ```kotlin
-    fun resetWithToast(view: View) {
+    fun resetWithToast() {
         Toast.makeText(applicationContext, "User created!", Toast.LENGTH_SHORT).show()
         edit_text_name.text.clear()
         edit_text_age.text.clear()
@@ -98,22 +81,20 @@ android:onClick="resetWithToast"
     }
 ```
 
-Added onClick tag for toast calling and reseting the layout.
+Added onClick tag for toast calling and resetting the layout.
 
 #### activeButtonOnLegalState - function
 
 ```kotlin
     private fun activeButtonOnLegalState() {
         val defaultCountry = getString(R.string.default_country)
-        button_signup.isEnabled =
+        val currentAge = if (edit_text_age.text.isNotBlank()) edit_text_age.text.toString().toInt() else 0
+        val legalAge = currentAge in 16..100
+        button_sign_up.isEnabled =
                 country_spinner.selectedItem.toString() != defaultCountry &&
-                edit_text_name.text.isNotBlank() &&
-                edit_text_age.text.isNotBlank()
+                edit_text_name.text.isNotBlank() && edit_text_name.text.toString() != ""
+                edit_text_age.text.isNotBlank() && legalAge
     }
 ```
 
 On function call checking if all fields on the current layout are legal, if so enabling the **SignUp** button.
-
-## Potrait Mode
-
-Added `<ScrollView/>` which wrappes the `<LinearLayout/>`.

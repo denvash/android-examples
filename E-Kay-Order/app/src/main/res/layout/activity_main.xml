@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/register_activity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="185dp">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:id="@+id/register_activity"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:minHeight="185dp">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme">
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme">
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/app_name"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="18sp" />
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/app_name"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textSize="18sp"/>
 
             </android.support.v7.widget.Toolbar>
 
             <TextView
-                android:id="@+id/text_header"
-                android:layout_width="374dp"
-                android:layout_height="51dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="center_vertical|center"
-                android:text="@string/header"
-                android:textAllCaps="true"
-                android:textSize="30sp" />
+                    android:id="@+id/text_header"
+                    android:layout_width="374dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/header"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"/>
 
             <LinearLayout
-                android:id="@+id/register_form"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center_horizontal|center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_full_name"
+                    android:id="@+id/register_form"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/name_field"
-                    android:textSize="18sp" />
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_horizontal|center"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/text_full_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/name_field"
+                        android:textSize="18sp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
-                    android:ems="10"
-                    android:hint="@string/name_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="text|textCapWords|textPersonName"
-                    android:selectAllOnFocus="false"
-                    android:singleLine="true"
-                    tools:targetApi="o" />
+                        android:id="@+id/edit_text_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+                        android:ems="10"
+                        android:hint="@string/name_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="text|textCapWords|textPersonName"
+                        android:selectAllOnFocus="false"
+                        android:singleLine="true"
+                        tools:targetApi="o"/>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="33dp" />
+                        android:layout_width="match_parent"
+                        android:layout_height="33dp"/>
 
                 <TextView
-                    android:id="@+id/text_age"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/age_field"
-                    android:textSize="18sp" />
+                        android:id="@+id/text_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/age_field"
+                        android:textSize="18sp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_age"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/age_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    tools:targetApi="o" />
+                        android:id="@+id/edit_text_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/age_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        tools:targetApi="o"/>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
 
                 <TextView
-                    android:id="@+id/text_country"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/country_field"
-                    android:textSize="18sp" />
+                        android:id="@+id/text_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/country_field"
+                        android:textSize="18sp"/>
 
                 <Spinner
-                    android:id="@+id/country_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/country_arrays" />
+                        android:id="@+id/country_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/country_arrays"/>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="62dp" />
+                        android:layout_width="match_parent"
+                        android:layout_height="62dp"/>
 
                 <Button
-                    android:id="@+id/button_sign_up"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/secondaryColor"
-                    android:enabled="false"
-                    android:text="@string/sign_up"
+                        android:id="@+id/button_sign_up"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/secondaryColor"
+                        android:enabled="false"
+                        android:text="@string/sign_up"
 
-                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button"/>
 
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>
