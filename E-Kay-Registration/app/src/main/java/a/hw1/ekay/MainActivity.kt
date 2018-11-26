@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                activeButtonOnLegalState()
             }
         })
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                activeButtonOnLegalState()
             }
         })
 
@@ -69,6 +71,6 @@ class MainActivity : AppCompatActivity() {
         button_sign_up.isEnabled =
                 country_spinner.selectedItem.toString() != defaultCountry &&
                 edit_text_name.text.isNotBlank() && edit_text_name.text.toString() != ""
-                edit_text_age.text.isNotBlank() && legalAge
+                && legalAge
     }
 }

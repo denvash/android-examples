@@ -27,6 +27,10 @@
                 android:textAllCaps="true"
                 android:textSize="30sp" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="62dp" />
+
             <LinearLayout
                 android:id="@+id/register_form"
                 android:layout_width="match_parent"
