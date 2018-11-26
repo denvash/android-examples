@@ -3,6 +3,8 @@ package a.hw1.ekay
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
@@ -14,30 +16,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit_text_name.setOnEditorActionListener { _, actionId, _ ->
-            var handle = true
-            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+        edit_text_name.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
                 activeButtonOnLegalState()
-                handle = false
             }
-            handle
-        }
 
-        edit_text_age.setOnEditorActionListener { v, actionId, _ ->
-            var handle = true
-            val ageRestriction = 16..100
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (v.text.toString().toInt() !in ageRestriction) {
-                    Toast.makeText(applicationContext, "Age restricted to 16-100", Toast.LENGTH_SHORT).show()
-                    edit_text_age.text.clear()
-                    button_sign_up.isEnabled = false
-                } else {
-                    activeButtonOnLegalState()
-                }
-                handle = false
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
-            handle
-        }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                activeButtonOnLegalState()
+            }
+        })
+
+        edit_text_age.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                activeButtonOnLegalState()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                activeButtonOnLegalState()
+            }
+        })
 
         country_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
