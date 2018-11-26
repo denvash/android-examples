@@ -63,9 +63,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun activeButtonOnLegalState() {
         val defaultCountry = getString(R.string.default_country)
+        val currentAge = if (edit_text_age.text.isNotBlank()) edit_text_age.text.toString().toInt() else 0
+        val legalAge = currentAge in 16..100
         button_sign_up.isEnabled =
                 country_spinner.selectedItem.toString() != defaultCountry &&
-                edit_text_name.text.isNotBlank() &&
-                edit_text_age.text.isNotBlank()
+                edit_text_name.text.isNotBlank() && edit_text_name.text.toString() != ""
+                && legalAge
     }
 }
